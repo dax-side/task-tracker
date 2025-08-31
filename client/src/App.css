@@ -1,5 +1,25 @@
 /* Clean, minimal UI for Task Tracker */
 
+:root {
+  --bg-color: #f8f9fa;
+  --text-color: #333;
+  --card-bg: white;
+  --border-color: #ddd;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --primary: #3498db;
+  --primary-hover: #2980b9;
+}
+
+[data-theme="dark"] {
+  --bg-color: #1a1a1a;
+  --text-color: #e0e0e0;
+  --card-bg: #2d2d2d;
+  --border-color: #444;
+  --shadow: rgba(0, 0, 0, 0.3);
+  --primary: #4dabf7;
+  --primary-hover: #339af0;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -8,9 +28,10 @@
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-  background-color: #f8f9fa;
-  color: #333;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .app {
@@ -23,10 +44,28 @@ body {
 header {
   text-align: center;
   margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.theme-toggle {
+  padding: 0.5rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.2s;
+  box-shadow: 0 2px 4px var(--shadow);
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
 }
 
 h1 {
-  color: #2c3e50;
+  color: var(--text-color);
   font-size: 2.5rem;
   font-weight: 300;
   margin-bottom: 0.5rem;
@@ -36,29 +75,31 @@ h1 {
   display: flex;
   gap: 1rem;
   margin-bottom: 2rem;
-  background: white;
+  background: var(--card-bg);
   padding: 1.5rem;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px var(--shadow);
 }
 
 input {
   flex: 1;
   padding: 0.75rem;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   font-size: 1rem;
   transition: border-color 0.2s;
+  background: var(--card-bg);
+  color: var(--text-color);
 }
 
 input:focus {
   outline: none;
-  border-color: #3498db;
+  border-color: var(--primary);
 }
 
 button {
   padding: 0.75rem 1.5rem;
-  background-color: #3498db;
+  background-color: var(--primary);
   color: white;
   border: none;
   border-radius: 4px;
@@ -68,7 +109,7 @@ button {
 }
 
 button:hover {
-  background-color: #2980b9;
+  background-color: var(--primary-hover);
 }
 
 button:disabled {
@@ -83,10 +124,10 @@ button:disabled {
 }
 
 .task {
-  background: white;
+  background: var(--card-bg);
   padding: 1.5rem;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px var(--shadow);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -94,7 +135,7 @@ button:disabled {
 }
 
 .task:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 8px var(--shadow);
 }
 
 .task.todo {
