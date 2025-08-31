@@ -15,10 +15,18 @@ function App() {
   const [tasks, setTasks] = useState<Task[]>([])
   const [newTask, setNewTask] = useState('')
   const [loading, setLoading] = useState(false)
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem('darkMode') === 'true'
+  })
 
   useEffect(() => {
     fetchTasks()
   }, [])
+
+  useEffect(() => {
+    localStorage.setItem('darkMode', darkMode.toString())
+    document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light')
+  }, [darkMode])
 
   const fetchTasks = async () => {
     try {
@@ -79,6 +87,13 @@ function App() {
     <div className="app">
       <header>
         <h1>Task Tracker</h1>
+        <button 
+          className="theme-toggle"
+          onClick={() => setDarkMode(!darkMode)}
+          aria-label="Toggle dark mode"
+        >
+          {darkMode ? '☀️' : '🌙'}
+        </button>
       </header>
       <main>
         <div className="add-task">
