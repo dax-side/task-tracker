@@ -4,13 +4,13 @@ A fullstack task management application with a RESTful API backend and a clean R
 
 ## Features
 
-- ✅ Add, update, and delete tasks
-- ✅ Mark tasks as in-progress or done
-- ✅ List all tasks with status filtering
-- ✅ Clean, minimal UI design
-- ✅ Swagger documentation for API testing
-- ✅ Zod schema validation
-- ✅ MongoDB Atlas integration
+-  Add, update, and delete tasks
+-  Mark tasks as in-progress or done
+-  List all tasks with status filtering
+-  Clean, minimal UI design
+-  Swagger documentation for API testing
+-  Zod schema validation
+-  MongoDB Atlas integration
 
 ## Tech Stack
 
