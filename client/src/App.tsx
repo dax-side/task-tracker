@@ -92,7 +92,10 @@ function App() {
   return (
     <div className="app">
       <header>
-        <h1>Task Tracker</h1>
+        <div className="header-content">
+          <h1>Task Tracker</h1>
+          <p className="subtitle">Organize your tasks with style ✨</p>
+        </div>
         <button 
           className="theme-toggle"
           onClick={() => setDarkMode(!darkMode)}
@@ -129,7 +132,13 @@ function App() {
             <div key={task.id} className={`task ${task.status}`}>
               <div className="task-content">
                 <p>{task.description}</p>
-                <small>Status: {task.status}</small>
+                <div className="task-status">
+                  <span className={`status-badge ${task.status}`}>
+                    {task.status === 'todo' && '📋 Todo'}
+                    {task.status === 'in-progress' && '🚀 In Progress'}
+                    {task.status === 'done' && '✅ Done'}
+                  </span>
+                </div>
               </div>
               <div className="task-actions">
                 {task.status === 'todo' && (
