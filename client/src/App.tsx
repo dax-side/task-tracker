@@ -15,6 +15,7 @@ function App() {
   const [tasks, setTasks] = useState<Task[]>([])
   const [newTask, setNewTask] = useState('')
   const [loading, setLoading] = useState(false)
+  const [searchQuery, setSearchQuery] = useState('')
   const [darkMode, setDarkMode] = useState(() => {
     return localStorage.getItem('darkMode') === 'true'
   })
@@ -83,6 +84,11 @@ function App() {
   const markInProgress = (id: string) => updateTask(id, { status: 'in-progress' })
   const markDone = (id: string) => updateTask(id, { status: 'done' })
 
+  // Filter tasks based on search query
+  const filteredTasks = tasks.filter(task =>
+    task.description.toLowerCase().includes(searchQuery.toLowerCase())
+  )
+
   return (
     <div className="app">
       <header>
@@ -96,6 +102,16 @@ function App() {
         </button>
       </header>
       <main>
+        <div className="search-section">
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Search tasks..."
+            className="search-input"
+          />
+        </div>
+
         <div className="add-task">
           <input
             type="text"
@@ -109,7 +125,7 @@ function App() {
           </button>
         </div>
         <div className="tasks">
-          {tasks.map(task => (
+          {filteredTasks.map(task => (
             <div key={task.id} className={`task ${task.status}`}>
               <div className="task-content">
                 <p>{task.description}</p>
