@@ -155,20 +155,6 @@ task-tracker/
 ├── .gitignore
 ├── package.json
 └── README.md
-```
 ├── tsconfig.json
 └── README.md
 ```
-
-## Development
-
-- **Build**: `npm run build`
-- **Start**: `npm start`
-- **Dev**: `npm run dev` (if you add ts-node)
-
-## Deployment
-
-This API can be deployed to platforms like Heroku, Vercel, or AWS. Make sure to set the `MONGODB_URI` environment variable in production.
-
-
-Built with ❤️ using TypeScript and Express.js
